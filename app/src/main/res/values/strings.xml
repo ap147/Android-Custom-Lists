@@ -1,3 +1,26 @@
 <resources>
-    <string name="app_name">My New Application</string>
+    <string name="app_name">Android Custom Lists</string>
+
+    <string name="breakfast_title_1"> Oats </string>
+    <string name="breakfast_description_1">
+        An easy, balanced breakfast.</string>
+
+    <string name="breakfast_title_2"> Weetbix </string>
+    <string name="breakfast_description_2">
+        Weet-Bix is a high-fibre and low-sugar breakfast cereal biscuit.</string>
+
+    <string name="breakfast_title_3"> Pan Cakes </string>
+    <string name="breakfast_description_3">
+        Be strong and pick anything else other than this. </string>
+
+    <string name="breakfast_title_4"> Water </string>
+    <string name="breakfast_description_4">
+        Water is a transparent, tasteless, odorless,
+        and the fluids of most living organisms. </string>
+
+    <string name="breakfast_title_5"> Blueberry Smoothie </string>
+    <string name="breakfast_description_5">
+        Quick to make and packed with fiber, vitamin C, and antioxidants. </string>
+
+
 </resources>
