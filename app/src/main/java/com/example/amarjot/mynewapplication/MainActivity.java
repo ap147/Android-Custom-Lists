@@ -1,10 +1,13 @@
 package com.example.amarjot.mynewapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     String [] lunch_description;
     Integer [] lunch_id;
 
+    public static final String EXTRA_MESSAGE = "com.example.amarjot.mynewapplication.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        breakfastButton.performClick();
     }
 
     protected void setupList (String type)
@@ -61,6 +64,22 @@ public class MainActivity extends AppCompatActivity {
             list.setAdapter(customListview);
         }
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                displayRecipeActivity(view, i);
+            }
+        });
+
+    }
+
+    protected void displayRecipeActivity(View view, int position)
+    {
+        Intent Recipe = new Intent(MainActivity.this, DisplayMessageActivity.class);
+        TextView foodName = (TextView) findViewById(R.id.textTitle);
+        String message = breakfast_title[position].toString();//foodName.getText().toString();
+        Recipe.putExtra(EXTRA_MESSAGE,message);
+        startActivity(Recipe);
     }
 
     protected void loadArrays ()
@@ -83,14 +102,14 @@ public class MainActivity extends AppCompatActivity {
         breakfast_id= new Integer[]{
                 R.drawable.oats,
                 R.drawable.weetbix,
-                R.drawable.pancakes,
                 R.drawable.water,
-                R.drawable.bananablueberrysmothie
+                R.drawable.water,
+                R.drawable.water
                 };
 
         lunch_title= new String[]{"Banana & Blue Berry Smoothie", "Water"};
         lunch_description= new String[]{"This is Banana & Blue Berry Smoothie", "this is water"};
-        lunch_id= new Integer[]{R.drawable.bananablueberrysmothie, R.drawable.water};
+        lunch_id= new Integer[]{R.drawable.water, R.drawable.water};
 
     }
 
