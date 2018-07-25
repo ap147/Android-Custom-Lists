@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        System.out.println("onCreate");
+
         loadArrays();
 
         final Button breakfastButton = findViewById(R.id.buttonBreakfast);
@@ -80,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         String message = breakfast_title[position].toString();//foodName.getText().toString();
         Recipe.putExtra(EXTRA_MESSAGE,message);
         startActivity(Recipe);
+        overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
     }
 
     protected void loadArrays ()
