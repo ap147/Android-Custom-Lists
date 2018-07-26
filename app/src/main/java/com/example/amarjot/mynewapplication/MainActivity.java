@@ -3,14 +3,17 @@ package com.example.amarjot.mynewapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
+
+
+import static android.graphics.Typeface.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -189,21 +192,24 @@ public class MainActivity extends AppCompatActivity {
         switch (selected_menu)
         {
             case "Breakfast" :
-                breakfast_button.setTextSize(20);
-                lunch_button.setTextSize(14);
-                dinner_button.setTextSize(14);
+
+                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                lunch_button.setPaintFlags(lunch_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
+                dinner_button.setPaintFlags(dinner_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 break;
 
             case "Lunch" :
-                breakfast_button.setTextSize(14);
-                lunch_button.setTextSize(20);
-                dinner_button.setTextSize(14);
+
+                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
+                lunch_button.setPaintFlags(lunch_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+                dinner_button.setPaintFlags(dinner_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
                 break;
 
             case "Dinner" :
-                breakfast_button.setTextSize(14);
-                lunch_button.setTextSize(14);
-                dinner_button.setTextSize(20);
+
+                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
+                lunch_button.setPaintFlags(lunch_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
+                dinner_button.setPaintFlags(dinner_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                 break;
         }
 
