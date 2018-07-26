@@ -13,30 +13,26 @@ public class MainActivity extends AppCompatActivity {
 
     ListView list;
 
-    String [] breakfast_title;
-    String [] breakfast_description;
-    Integer [] breakfast_id;
-
-    String [] lunch_title;
-    String [] lunch_description;
-    Integer [] lunch_id;
+    String [] recipe_title;
+    String [] recipe_description;
+    Integer [] recipe_image_id;
 
     public static final String EXTRA_MESSAGE = "com.example.amarjot.mynewapplication.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
         System.out.println("onCreate");
 
-        loadArrays();
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
 
         final Button breakfastButton = findViewById(R.id.buttonBreakfast);
         breakfastButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                setupList("breakfast");
+                setupList("Breakfast");
             }
         });
 
@@ -44,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         lunchButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
-                setupList("lunch");
+                setupList("Lunch");
             }
         });
 
@@ -52,19 +48,11 @@ public class MainActivity extends AppCompatActivity {
 
     protected void setupList (String type)
     {
+        loadArray(type);
 
-        if (type.equals("breakfast"))
-        {
-            list= (ListView) findViewById(R.id.listview);
-            CustomListview customListview = new CustomListview(this, breakfast_title, breakfast_description, breakfast_id);
-            list.setAdapter(customListview);
-        }
-        else if (type.equals("lunch"))
-        {
-            list= (ListView) findViewById(R.id.listview);
-            CustomListview customListview = new CustomListview(this, lunch_title, lunch_description, lunch_id);
-            list.setAdapter(customListview);
-        }
+        list= (ListView) findViewById(R.id.listview);
+        CustomListview customListview = new CustomListview(this, recipe_title, recipe_description, recipe_image_id);
+        list.setAdapter(customListview);
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -78,41 +66,62 @@ public class MainActivity extends AppCompatActivity {
     protected void displayRecipeActivity(View view, int position)
     {
         Intent Recipe = new Intent(MainActivity.this, DisplayMessageActivity.class);
-        TextView foodName = (TextView) findViewById(R.id.textTitle);
-        String message = breakfast_title[position].toString();//foodName.getText().toString();
+        String message = recipe_title[position].toString();
         Recipe.putExtra(EXTRA_MESSAGE,message);
         startActivity(Recipe);
         overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
     }
 
-    protected void loadArrays ()
+    protected void loadArray (String type)
     {
+        switch (type)
+        {
+            case "Breakfast" :
+                recipe_title = new String[]{
+                        getString(R.string.breakfast_title_1),
+                        getString(R.string.breakfast_title_2),
+                        getString(R.string.breakfast_title_3),
+                        getString(R.string.breakfast_title_4),
+                        getString(R.string.breakfast_title_5)};
 
-        breakfast_title = new String[]{
-                getString(R.string.breakfast_title_1),
-                getString(R.string.breakfast_title_2),
-                getString(R.string.breakfast_title_3),
-                getString(R.string.breakfast_title_4),
-                getString(R.string.breakfast_title_5)};
+                recipe_description= new String[]{
+                        getString(R.string.breakfast_description_1),
+                        getString(R.string.breakfast_description_2),
+                        getString(R.string.breakfast_description_3),
+                        getString(R.string.breakfast_description_4),
+                        getString(R.string.breakfast_description_5)};
 
-        breakfast_description= new String[]{
-                getString(R.string.breakfast_description_1),
-                getString(R.string.breakfast_description_2),
-                getString(R.string.breakfast_description_3),
-                getString(R.string.breakfast_description_4),
-                getString(R.string.breakfast_description_5)};
-
-        breakfast_id= new Integer[]{
-                R.drawable.oats,
-                R.drawable.weetbix,
-                R.drawable.water,
-                R.drawable.water,
-                R.drawable.water
+                recipe_image_id= new Integer[]{
+                        R.drawable.oats,
+                        R.drawable.weetbix,
+                        R.drawable.water,
+                        R.drawable.water,
+                        R.drawable.water
                 };
+                break;
 
-        lunch_title= new String[]{"Banana & Blue Berry Smoothie", "Water"};
-        lunch_description= new String[]{"This is Banana & Blue Berry Smoothie", "this is water"};
-        lunch_id= new Integer[]{R.drawable.water, R.drawable.water};
+            case "Lunch" :
+                recipe_title = new String[]{
+                        getString(R.string.breakfast_title_2),
+                        getString(R.string.breakfast_title_3),
+                        getString(R.string.breakfast_title_4),
+                        getString(R.string.breakfast_title_5)};
+
+                recipe_description= new String[]{
+                        getString(R.string.breakfast_description_2),
+                        getString(R.string.breakfast_description_3),
+                        getString(R.string.breakfast_description_4),
+                        getString(R.string.breakfast_description_5)};
+
+                recipe_image_id= new Integer[]{
+                        R.drawable.weetbix,
+                        R.drawable.water,
+                        R.drawable.water,
+                        R.drawable.water
+                };
+                break;
+
+        }
 
     }
 

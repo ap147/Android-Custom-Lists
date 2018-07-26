@@ -13,9 +13,9 @@ import android.widget.TextView;
 
 public class CustomListview extends ArrayAdapter <String>{
 
-    private String [] breakfastname;
-    private String [] breakfastdescription;
-    private Integer [] breakfastid;
+    private String [] recipe_title;
+    private String [] recipe_description;
+    private Integer [] recipe_image_id;
 
     private Activity context;
 
@@ -23,11 +23,9 @@ public class CustomListview extends ArrayAdapter <String>{
         super(context, R.layout.listview_layout, breakfastname);
 
         this.context= (Activity) context;
-        this.breakfastname=breakfastname;
-        this.breakfastdescription=breakfastdescription;
-        this.breakfastid=breakfastid;
-
-
+        this.recipe_title=breakfastname;
+        this.recipe_description=breakfastdescription;
+        this.recipe_image_id=breakfastid;
     }
 
     @NonNull
@@ -48,9 +46,9 @@ public class CustomListview extends ArrayAdapter <String>{
             viewHolder = (ViewHolder) r.getTag();
         }
 
-        viewHolder.imageView.setImageResource(breakfastid[position]);
-        viewHolder.textViewName.setText(breakfastname[position]);
-        viewHolder.textViewDescription.setText(breakfastdescription[position]);
+        viewHolder.textViewName.setText(recipe_title[position]);
+        viewHolder.textViewDescription.setText(recipe_description[position]);
+        viewHolder.imageView.setImageResource(recipe_image_id[position]);
 
         return r;
     }
