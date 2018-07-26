@@ -14,21 +14,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/imageView"
-                android:layout_width="140dp"
-                android:layout_height="109dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:cropToPadding="false"
-                app:srcCompat="@drawable/oats" />
+                android:layout_width="150dp"
+                android:layout_height="130dp"
+                android:src="@drawable/water" />
 
             <TextView
                 android:id="@+id/textTitle"
                 android:layout_width="206dp"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/textDescription"
-                android:layout_alignTop="@+id/imageView"
                 android:fontFamily="sans-serif"
                 android:text="TextView"
                 android:textSize="18sp"
@@ -36,11 +32,11 @@
 
             <TextView
                 android:id="@+id/textDescription"
-                android:layout_width="205dp"
+                android:layout_width="222dp"
                 android:layout_height="80dp"
-                android:layout_alignBottom="@+id/imageView"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="40dp"
                 android:text="TextView" />
         </RelativeLayout>
     </LinearLayout>

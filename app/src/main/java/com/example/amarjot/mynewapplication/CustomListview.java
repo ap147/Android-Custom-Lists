@@ -11,6 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.mikhaellopez.circularimageview.CircularImageView;
+
 public class CustomListview extends ArrayAdapter <String>{
 
     private String [] recipe_title;
@@ -57,13 +59,12 @@ public class CustomListview extends ArrayAdapter <String>{
     {
         TextView textViewName;
         TextView textViewDescription;
-        ImageView imageView;
-
+        CircularImageView imageView;
         ViewHolder (View v)
         {
             textViewName = (TextView) v.findViewById(R.id.textTitle);
             textViewDescription = (TextView) v.findViewById(R.id.textDescription);
-            imageView = (ImageView) v.findViewById(R.id.imageView);
+            imageView = (CircularImageView) v.findViewById(R.id.imageView);
         }
     }
 }

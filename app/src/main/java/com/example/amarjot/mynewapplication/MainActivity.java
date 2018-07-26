@@ -209,10 +209,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    protected void unselectButton (Button button_id)
-    {
-        button_id.setBackgroundColor(Color.GRAY);
-    }
     protected void saveState (String recipeType) {
 
         sharedPreferences = getSharedPreferences("recipeType", Context.MODE_PRIVATE);
