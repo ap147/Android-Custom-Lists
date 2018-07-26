@@ -1,6 +1,8 @@
 package com.example.amarjot.mynewapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    SharedPreferences sharedPreferences;
 
     ListView list;
 
@@ -33,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 setupList("Breakfast");
+                saveState("Breakfast");
             }
         });
 
@@ -41,9 +46,17 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 setupList("Lunch");
+                saveState("Lunch");
             }
         });
 
+        sharedPreferences = getSharedPreferences("recipeType", Context.MODE_PRIVATE);
+
+        if (sharedPreferences.contains("recipeType"))
+        {
+            String recipe_type = sharedPreferences.getString("recipeType", "");
+            setupList(recipe_type);
+        }
     }
 
     protected void setupList (String type)
@@ -123,6 +136,15 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    protected void saveState (String recipeType)
+    {
+        sharedPreferences = getSharedPreferences("recipeType", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        editor.putString("recipeType", recipeType);
+        editor.apply();
     }
 
 }
