@@ -29,7 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Breakfast"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:background="@android:color/transparent"/>
 
         <Button
             android:id="@+id/buttonLunch"
@@ -37,7 +38,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Lunch"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:background="@android:color/transparent"/>
 
         <Button
             android:id="@+id/buttonDinner"
@@ -45,7 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="Dinner"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:background="@android:color/transparent"/>
     </LinearLayout>
 
     <ListView

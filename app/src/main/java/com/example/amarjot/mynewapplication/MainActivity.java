@@ -189,27 +189,18 @@ public class MainActivity extends AppCompatActivity {
         switch (selected_menu)
         {
             case "Breakfast" :
-                breakfast_button.setBackgroundColor(Color.RED);
-                lunch_button.setBackgroundColor(Color.GRAY);
-                dinner_button.setBackgroundColor(Color.GRAY);
                 breakfast_button.setTextSize(20);
                 lunch_button.setTextSize(14);
                 dinner_button.setTextSize(14);
                 break;
 
             case "Lunch" :
-                breakfast_button.setBackgroundColor(Color.GRAY);
-                lunch_button.setBackgroundColor(Color.RED);
-                dinner_button.setBackgroundColor(Color.GRAY);
                 breakfast_button.setTextSize(14);
                 lunch_button.setTextSize(20);
                 dinner_button.setTextSize(14);
                 break;
 
             case "Dinner" :
-                breakfast_button.setBackgroundColor(Color.GRAY);
-                lunch_button.setBackgroundColor(Color.GRAY);
-                dinner_button.setBackgroundColor(Color.RED);
                 breakfast_button.setTextSize(14);
                 lunch_button.setTextSize(14);
                 dinner_button.setTextSize(20);
