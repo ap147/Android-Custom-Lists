@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android Custom Lists</string>
+    <string name="app_name">Recipe Book</string>
 
     <string name="breakfast_title_1"> Oats </string>
     <string name="breakfast_description_1">
@@ -21,6 +21,49 @@
     <string name="breakfast_title_5"> Blueberry Smoothie </string>
     <string name="breakfast_description_5">
         Quick to make and packed with fiber, vitamin C, and antioxidants. </string>
+
+    <string name="lunch_title_1"> Date Scons </string>
+    <string name="lunch_description_1">
+        An easy, balanced breakfast.</string>
+
+    <string name="lunch_title_2"> Avocado on Toast  </string>
+    <string name="lunch_description_2">
+        Weet-Bix is a high-fibre and low-sugar breakfast cereal biscuit.</string>
+
+    <string name="lunch_title_3"> Guacamole </string>
+    <string name="lunch_description_3">
+        Be strong and pick anything else other than this. </string>
+
+    <string name="lunch_title_4"> Humus and Tomato on Crackers </string>
+    <string name="lunch_description_4">
+        Water is a transparent, tasteless, odorless,
+        and the fluids of most living organisms. </string>
+
+    <string name="lunch_title_5"> Mini Pizzas </string>
+    <string name="lunch_description_5">
+        Quick to make and packed with fiber, vitamin C, and antioxidants. </string>
+
+    <string name="dinner_title_1"> Thai Pumpkin Soup </string>
+    <string name="dinner_description_1">
+        An easy, balanced breakfast.</string>
+
+    <string name="dinner_title_2"> Cannelloni </string>
+    <string name="dinner_description_2">
+        Weet-Bix is a high-fibre and low-sugar breakfast cereal biscuit.</string>
+
+    <string name="dinner_title_3"> Lasagna </string>
+    <string name="dinner_description_3">
+        Be strong and pick anything else other than this. </string>
+
+    <string name="dinner_title_4"> Wraps </string>
+    <string name="dinner_description_4">
+        Water is a transparent, tasteless, odorless,
+        and the fluids of most living organisms. </string>
+
+    <string name="dinner_title_5"> Nachos </string>
+    <string name="dinner_description_5">
+        Quick to make and packed with fiber, vitamin C, and antioxidants. </string>
+
 
 
 </resources>
