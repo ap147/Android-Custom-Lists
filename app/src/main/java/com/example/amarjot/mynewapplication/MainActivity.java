@@ -3,6 +3,7 @@ package com.example.amarjot.mynewapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     ListView list;
 
-    String [] recipe_title;
-    String [] recipe_description;
+    String [] recipe_title, recipe_description;
     Integer [] recipe_image_id;
 
     public static final String EXTRA_MESSAGE = "com.example.amarjot.mynewapplication.MESSAGE";
@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity {
                 displayRecipeActivity(view, i);
             }
         });
-
     }
 
     protected void displayRecipeActivity(View view, int position) {
@@ -127,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                         R.drawable.water,
                         R.drawable.water,
                         R.drawable.water};
+                setSelectedButton("Breakfast");
                 break;
 
             case "Lunch" :
@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                         R.drawable.water,
                         R.drawable.water,
                         R.drawable.water};
+                setSelectedButton("Lunch");
                 break;
 
             case "Dinner" :
@@ -173,11 +174,45 @@ public class MainActivity extends AppCompatActivity {
                         R.drawable.water,
                         R.drawable.water,
                         R.drawable.water};
+                setSelectedButton("Dinner");
                 break;
         }
 
     }
 
+    protected void setSelectedButton (String selected_menu)
+    {
+        Button breakfast_button = findViewById(R.id.buttonBreakfast);
+        Button lunch_button = findViewById(R.id.buttonLunch);
+        Button dinner_button = findViewById(R.id.buttonDinner);
+
+        switch (selected_menu)
+        {
+            case "Breakfast" :
+                breakfast_button.setBackgroundColor(Color.RED);
+                lunch_button.setBackgroundColor(Color.GRAY);
+                dinner_button.setBackgroundColor(Color.GRAY);
+                break;
+
+            case "Lunch" :
+                breakfast_button.setBackgroundColor(Color.GRAY);
+                lunch_button.setBackgroundColor(Color.RED);
+                dinner_button.setBackgroundColor(Color.GRAY);
+                break;
+
+            case "Dinner" :
+                breakfast_button.setBackgroundColor(Color.GRAY);
+                lunch_button.setBackgroundColor(Color.GRAY);
+                dinner_button.setBackgroundColor(Color.RED);
+                break;
+        }
+
+    }
+
+    protected void unselectButton (Button button_id)
+    {
+        button_id.setBackgroundColor(Color.GRAY);
+    }
     protected void saveState (String recipeType) {
 
         sharedPreferences = getSharedPreferences("recipeType", Context.MODE_PRIVATE);
