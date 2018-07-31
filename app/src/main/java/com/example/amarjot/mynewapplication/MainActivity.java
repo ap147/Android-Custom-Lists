@@ -12,9 +12,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-
-import static android.graphics.Typeface.*;
-
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
@@ -23,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     String [] recipe_title, recipe_description;
     Integer [] recipe_image_id;
+
+    String selected_Category;
 
     public static final String EXTRA_MESSAGE = "com.example.amarjot.mynewapplication.MESSAGE";
 
@@ -34,8 +33,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        setupButton();
         setSharedPreferences();
+        setupButton();
+    }
+
+    @Override
+    protected void onStop() {
+        saveState(selected_Category);
+        super.onStop();
     }
 
     protected void setupButton () {
@@ -45,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 setupList("Breakfast");
-                saveState("Breakfast");
+                selected_Category = "Breakfast";
             }
         });
 
@@ -54,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 setupList("Lunch");
-                saveState("Lunch");
+                selected_Category = "Lunch";
             }
         });
 
@@ -63,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 setupList("Dinner");
-                saveState("Dinner");
+                selected_Category = "Dinner";
             }
         });
     }
@@ -98,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
     protected void displayRecipeActivity(View view, int position) {
 
         Intent Recipe = new Intent(MainActivity.this, DisplayMessageActivity.class);
-        String message = recipe_title[position].toString();
+        int message = position;
         Recipe.putExtra(EXTRA_MESSAGE,message);
         startActivity(Recipe);
         overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
@@ -129,8 +134,8 @@ public class MainActivity extends AppCompatActivity {
                         R.drawable.water,
                         R.drawable.water,
                         R.drawable.water};
-                setSelectedButton("Breakfast");
-                break;
+                        setSelectedButton("Breakfast");
+                        break;
 
             case "Lunch" :
                 recipe_title = new String[] {
@@ -153,8 +158,8 @@ public class MainActivity extends AppCompatActivity {
                         R.drawable.water,
                         R.drawable.water,
                         R.drawable.water};
-                setSelectedButton("Lunch");
-                break;
+                        setSelectedButton("Lunch");
+                        break;
 
             case "Dinner" :
                 recipe_title = new String[] {
@@ -177,8 +182,8 @@ public class MainActivity extends AppCompatActivity {
                         R.drawable.water,
                         R.drawable.water,
                         R.drawable.water};
-                setSelectedButton("Dinner");
-                break;
+                        setSelectedButton("Dinner");
+                        break;
         }
 
     }
