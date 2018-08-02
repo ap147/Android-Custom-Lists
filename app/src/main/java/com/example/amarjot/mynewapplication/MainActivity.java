@@ -5,8 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -23,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     String selected_Category;
 
+    private DrawerLayout mDrawerLayout;
+
     public static final String EXTRA_MESSAGE = "com.example.amarjot.mynewapplication.MESSAGE";
 
     @Override
@@ -33,8 +41,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24px);
+
         setSharedPreferences();
         setupButton();
+        setupList("Dinner");
     }
 
     @Override
@@ -43,34 +59,44 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     protected void setupButton () {
 
-        final Button breakfastButton = findViewById(R.id.buttonBreakfast);
-        breakfastButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-                setupList("Breakfast");
-                selected_Category = "Breakfast";
-            }
-        });
-
-        final Button lunchButton = findViewById(R.id.buttonLunch);
-        lunchButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-                setupList("Lunch");
-                selected_Category = "Lunch";
-            }
-        });
-
-        final Button dinnerButton = findViewById(R.id.buttonDinner);
-        dinnerButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-                setupList("Dinner");
-                selected_Category = "Dinner";
-            }
-        });
+//        final Button breakfastButton = findViewById(R.id.buttonBreakfast);
+//        breakfastButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Code here executes on main thread after user presses button
+//                setupList("Breakfast");
+//                selected_Category = "Breakfast";
+//            }
+//        });
+//
+//        final Button lunchButton = findViewById(R.id.buttonLunch);
+//        lunchButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Code here executes on main thread after user presses button
+//                setupList("Lunch");
+//                selected_Category = "Lunch";
+//            }
+//        });
+//
+//        final Button dinnerButton = findViewById(R.id.buttonDinner);
+//        dinnerButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Code here executes on main thread after user presses button
+//                setupList("Dinner");
+//                selected_Category = "Dinner";
+//            }
+//        });
     }
 
     protected void setSharedPreferences () {
@@ -190,33 +216,33 @@ public class MainActivity extends AppCompatActivity {
 
     protected void setSelectedButton (String selected_menu)
     {
-        Button breakfast_button = findViewById(R.id.buttonBreakfast);
-        Button lunch_button = findViewById(R.id.buttonLunch);
-        Button dinner_button = findViewById(R.id.buttonDinner);
-
-        switch (selected_menu)
-        {
-            case "Breakfast" :
-
-                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                lunch_button.setPaintFlags(lunch_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                dinner_button.setPaintFlags(dinner_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                break;
-
-            case "Lunch" :
-
-                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                lunch_button.setPaintFlags(lunch_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                dinner_button.setPaintFlags(dinner_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                break;
-
-            case "Dinner" :
-
-                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                lunch_button.setPaintFlags(lunch_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                dinner_button.setPaintFlags(dinner_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                break;
-        }
+//        Button breakfast_button = findViewById(R.id.buttonBreakfast);
+//        Button lunch_button = findViewById(R.id.buttonLunch);
+//        Button dinner_button = findViewById(R.id.buttonDinner);
+//
+//        switch (selected_menu)
+//        {
+//            case "Breakfast" :
+//
+//                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//                lunch_button.setPaintFlags(lunch_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
+//                dinner_button.setPaintFlags(dinner_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
+//                break;
+//
+//            case "Lunch" :
+//
+//                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
+//                lunch_button.setPaintFlags(lunch_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//                dinner_button.setPaintFlags(dinner_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
+//                break;
+//
+//            case "Dinner" :
+//
+//                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
+//                lunch_button.setPaintFlags(lunch_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
+//                dinner_button.setPaintFlags(dinner_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//                break;
+//        }
 
     }
 
