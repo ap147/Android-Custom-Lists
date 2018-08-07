@@ -7,6 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".DisplayMessageActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
+
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="368dp"
@@ -80,6 +87,16 @@
                 android:text="TextView"
                 tools:layout_editor_absoluteX="0dp"
                 tools:layout_editor_absoluteY="421dp" />
+
+            <Button
+                android:id="@+id/buttonHomeScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
     </ScrollView>
 

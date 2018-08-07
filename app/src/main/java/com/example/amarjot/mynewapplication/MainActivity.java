@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
+        // TODO: Save State
         saveState(selected_Category);
         super.onStop();
     }
@@ -171,9 +172,9 @@ public class MainActivity extends AppCompatActivity {
                 recipe_image_id= new Integer[] {
                         R.drawable.oats,
                         R.drawable.weetbix,
+                        R.drawable.pancakes,
                         R.drawable.water,
-                        R.drawable.water,
-                        R.drawable.water};
+                        R.drawable.blueberry_smoothie};
                         break;
 
             case "Lunch" :
@@ -192,11 +193,11 @@ public class MainActivity extends AppCompatActivity {
                         getString(R.string.lunch_description_5)};
 
                 recipe_image_id= new Integer[] {
-                        R.drawable.oats,
-                        R.drawable.weetbix,
-                        R.drawable.water,
-                        R.drawable.water,
-                        R.drawable.water};
+                        R.drawable.date_scones,
+                        R.drawable.avocado_toast,
+                        R.drawable.guacamole,
+                        R.drawable.hummus_crackers,
+                        R.drawable.mini_pizzas};
                         break;
 
             case "Dinner" :
@@ -215,11 +216,11 @@ public class MainActivity extends AppCompatActivity {
                         getString(R.string.dinner_description_5)};
 
                 recipe_image_id= new Integer[] {
-                        R.drawable.oats,
-                        R.drawable.weetbix,
-                        R.drawable.water,
-                        R.drawable.water,
-                        R.drawable.water};
+                        R.drawable.thai_pumpkin_soup,
+                        R.drawable.canaloni,
+                        R.drawable.lasanga_vege,
+                        R.drawable.wraps,
+                        R.drawable.nachos};
                         break;
         }
 
