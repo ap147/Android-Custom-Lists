@@ -3,6 +3,7 @@ package com.example.amarjot.mynewapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -54,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
     public void setupNav() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
 
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
@@ -98,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         // TODO: Add code here to update the UI based on the item selected
                         // For example, swap UI fragments here
                         selected_Category = menuItem.getTitle().toString();
+
                         setupList(selected_Category);
                         saveState(selected_Category);
                         return true;
@@ -150,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
         int message = position;
         Recipe.putExtra(EXTRA_MESSAGE,message);
         startActivity(Recipe);
-        overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
+        overridePendingTransition( R.anim.slide_in_right, R.anim.slide_out_right);
     }
 
     protected void loadArray (String type) {

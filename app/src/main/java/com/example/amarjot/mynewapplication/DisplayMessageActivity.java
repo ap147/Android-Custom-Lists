@@ -1,6 +1,7 @@
 package com.example.amarjot.mynewapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24px);
 
-        toolbar.setTitle("HELLO");
+        toolbar.setTitleTextColor(Color.WHITE);
+        getSupportActionBar().setTitle("My title");
     }
 }

@@ -68,5 +68,14 @@
     <string name="dinner_title_5"> Nachos </string>
     <string name="dinner_description_5">
         Quick to make and packed with fiber, vitamin C, and antioxidants. </string>
+    
+    
+    <string name="x">
+        - Place avocado flesh in a medium bowl and mash with a fork until semi-smooth.\n \n
+        - Add all other ingredients (reserving a little of the green part of the spring onion / green onion, a little coriander / cilantro and a little of the chilli for garnish) and stir to combine.\n \n
+        - Adjust seasonings to taste.\n \n
+        - Transfer to a serving bowl and garnish with spring onion / green onion greens, chilli and coriander / cilantro. \n \n
+        - Serve with Fresh Flour Tortillas or tortilla chips, if desired. Use within 3-4 hours of making.
+    </string>
 
 </resources>
