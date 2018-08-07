@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                         // For example, swap UI fragments here
                         selected_Category = menuItem.getTitle().toString();
                         setupList(selected_Category);
+                        saveState(selected_Category);
                         return true;
                     }
                 });
@@ -122,11 +123,12 @@ public class MainActivity extends AppCompatActivity {
         {
             String recipe_type = sharedPreferences.getString("recipeType", "");
             setupList(recipe_type);
+            System.out.println(recipe_type);
         }
     }
 
     protected void setupList (String type) {
-
+        selected_Category = type;
         loadArray(type);
 
         list= (ListView) findViewById(R.id.listview);
@@ -142,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void displayRecipeActivity(View view, int position) {
+        saveState(selected_Category);
 
         Intent Recipe = new Intent(MainActivity.this, DisplayMessageActivity.class);
         int message = position;
@@ -228,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     protected void saveState (String recipeType) {
-
+        System.out.println("Saving STATE : " + recipeType);
         sharedPreferences = getSharedPreferences("recipeType", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
