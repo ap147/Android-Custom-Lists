@@ -3,13 +3,17 @@ package com.example.amarjot.mynewapplication;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Paint;
-import android.graphics.Typeface;
+import android.graphics.Color;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     String selected_Category;
 
+    private DrawerLayout mDrawerLayout;
+
     public static final String EXTRA_MESSAGE = "com.example.amarjot.mynewapplication.MESSAGE";
 
     @Override
@@ -33,44 +39,83 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setupNav();
         setSharedPreferences();
-        setupButton();
+
+        // TODO: By default select Breakfast
     }
 
     @Override
     protected void onStop() {
+        // TODO: Save State
         saveState(selected_Category);
         super.onStop();
     }
 
-    protected void setupButton () {
+    public void setupNav() {
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(Color.WHITE);
 
-        final Button breakfastButton = findViewById(R.id.buttonBreakfast);
-        breakfastButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-                setupList("Breakfast");
-                selected_Category = "Breakfast";
-            }
-        });
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24px);
 
-        final Button lunchButton = findViewById(R.id.buttonLunch);
-        lunchButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-                setupList("Lunch");
-                selected_Category = "Lunch";
-            }
-        });
+        mDrawerLayout = findViewById(R.id.drawer_layout);
 
-        final Button dinnerButton = findViewById(R.id.buttonDinner);
-        dinnerButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                // Code here executes on main thread after user presses button
-                setupList("Dinner");
-                selected_Category = "Dinner";
-            }
-        });
+        mDrawerLayout.addDrawerListener(
+                new DrawerLayout.DrawerListener() {
+                    @Override
+                    public void onDrawerSlide(View drawerView, float slideOffset) {
+                        // Respond when the drawer's position changes
+                    }
+
+                    @Override
+                    public void onDrawerOpened(View drawerView) {
+                        // Respond when the drawer is opened
+                    }
+
+                    @Override
+                    public void onDrawerClosed(View drawerView) {
+                        // Respond when the drawer is closed
+                    }
+
+                    @Override
+                    public void onDrawerStateChanged(int newState) {
+                        // Respond when the drawer motion state changes
+                    }
+                }
+        );
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        // set item as selected to persist highlight
+                        menuItem.setChecked(true);
+                        // close drawer when item is tapped
+                        mDrawerLayout.closeDrawers();
+
+                        // TODO: Add code here to update the UI based on the item selected
+                        // For example, swap UI fragments here
+                        selected_Category = menuItem.getTitle().toString();
+
+                        setupList(selected_Category);
+                        saveState(selected_Category);
+                        return true;
+                    }
+                });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                mDrawerLayout.openDrawer(GravityCompat.START);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     protected void setSharedPreferences () {
@@ -81,11 +126,12 @@ public class MainActivity extends AppCompatActivity {
         {
             String recipe_type = sharedPreferences.getString("recipeType", "");
             setupList(recipe_type);
+            System.out.println(recipe_type);
         }
     }
 
     protected void setupList (String type) {
-
+        selected_Category = type;
         loadArray(type);
 
         list= (ListView) findViewById(R.id.listview);
@@ -101,12 +147,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void displayRecipeActivity(View view, int position) {
+        saveState(selected_Category);
 
         Intent Recipe = new Intent(MainActivity.this, DisplayMessageActivity.class);
         int message = position;
         Recipe.putExtra(EXTRA_MESSAGE,message);
         startActivity(Recipe);
-        overridePendingTransition( R.anim.slide_in_up, R.anim.slide_out_up );
+        overridePendingTransition( R.anim.slide_in_right, R.anim.slide_out_right);
     }
 
     protected void loadArray (String type) {
@@ -131,10 +178,9 @@ public class MainActivity extends AppCompatActivity {
                 recipe_image_id= new Integer[] {
                         R.drawable.oats,
                         R.drawable.weetbix,
+                        R.drawable.pancakes,
                         R.drawable.water,
-                        R.drawable.water,
-                        R.drawable.water};
-                        setSelectedButton("Breakfast");
+                        R.drawable.blueberry_smoothie};
                         break;
 
             case "Lunch" :
@@ -153,12 +199,11 @@ public class MainActivity extends AppCompatActivity {
                         getString(R.string.lunch_description_5)};
 
                 recipe_image_id= new Integer[] {
-                        R.drawable.oats,
-                        R.drawable.weetbix,
-                        R.drawable.water,
-                        R.drawable.water,
-                        R.drawable.water};
-                        setSelectedButton("Lunch");
+                        R.drawable.date_scones,
+                        R.drawable.avocado_toast,
+                        R.drawable.guacamole,
+                        R.drawable.hummus_crackers,
+                        R.drawable.mini_pizzas};
                         break;
 
             case "Dinner" :
@@ -177,51 +222,19 @@ public class MainActivity extends AppCompatActivity {
                         getString(R.string.dinner_description_5)};
 
                 recipe_image_id= new Integer[] {
-                        R.drawable.oats,
-                        R.drawable.weetbix,
-                        R.drawable.water,
-                        R.drawable.water,
-                        R.drawable.water};
-                        setSelectedButton("Dinner");
+                        R.drawable.thai_pumpkin_soup,
+                        R.drawable.canaloni,
+                        R.drawable.lasanga_vege,
+                        R.drawable.wraps,
+                        R.drawable.nachos};
                         break;
         }
 
     }
 
-    protected void setSelectedButton (String selected_menu)
-    {
-        Button breakfast_button = findViewById(R.id.buttonBreakfast);
-        Button lunch_button = findViewById(R.id.buttonLunch);
-        Button dinner_button = findViewById(R.id.buttonDinner);
-
-        switch (selected_menu)
-        {
-            case "Breakfast" :
-
-                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                lunch_button.setPaintFlags(lunch_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                dinner_button.setPaintFlags(dinner_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                break;
-
-            case "Lunch" :
-
-                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                lunch_button.setPaintFlags(lunch_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                dinner_button.setPaintFlags(dinner_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                break;
-
-            case "Dinner" :
-
-                breakfast_button.setPaintFlags(breakfast_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                lunch_button.setPaintFlags(lunch_button.getPaintFlags() & (~ Paint.UNDERLINE_TEXT_FLAG));
-                dinner_button.setPaintFlags(dinner_button.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                break;
-        }
-
-    }
 
     protected void saveState (String recipeType) {
-
+        System.out.println("Saving STATE : " + recipeType);
         sharedPreferences = getSharedPreferences("recipeType", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 

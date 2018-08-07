@@ -1,9 +1,11 @@
 package com.example.amarjot.mynewapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.support.v7.widget.Toolbar;
 
 public class DisplayMessageActivity extends AppCompatActivity {
 
@@ -16,8 +18,15 @@ public class DisplayMessageActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
-        // Capture the layout's TextView and set the string as its text
-        TextView textView = findViewById(R.id.TextViewRecipeTitle);
-        textView.setText(message);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        ActionBar actionbar = getSupportActionBar();
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24px);
+
+        toolbar.setTitleTextColor(Color.WHITE);
+        getSupportActionBar().setTitle("My title");
     }
 }

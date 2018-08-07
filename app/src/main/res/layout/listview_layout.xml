@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBase">
@@ -13,7 +11,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp">
 
             <com.mikhaellopez.circularimageview.CircularImageView
                 android:id="@+id/imageView"
@@ -28,9 +27,9 @@
                 android:layout_alignStart="@+id/textDescription"
                 android:fontFamily="sans-serif"
                 android:text="TextView"
+                android:textColor="@color/colorSecondary"
                 android:textSize="18sp"
-                android:typeface="normal"
-                android:textColor="@color/colorSecondary"/>
+                android:typeface="normal" />
 
             <TextView
                 android:id="@+id/textDescription"
@@ -40,7 +39,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="40dp"
                 android:text="TextView"
-                android:textColor="@color/colorDescription"/>/>
+                android:textColor="@color/colorDescription" />/>
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

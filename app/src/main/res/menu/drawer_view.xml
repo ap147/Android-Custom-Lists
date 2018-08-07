@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_breakfast"
+            android:title="@string/category_title_breakfast" />
+
+        <item
+            android:id="@+id/nav_lunch"
+            android:title="@string/category_title_lunch" />
+
+        <item
+            android:id="@+id/nav_dinner"
+            android:title="@string/category_title_dinner_" />
+
+    </group>
+</menu>
