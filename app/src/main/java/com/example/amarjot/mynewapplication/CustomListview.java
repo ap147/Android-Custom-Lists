@@ -8,10 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
+
+import java.util.Objects;
+
+import static java.util.Objects.*;
 
 public class CustomListview extends ArrayAdapter <String>{
 

@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupNav();
         setSharedPreferences();
+        setupFragments();
 
         // TODO: By default select Breakfast
     }
@@ -50,6 +54,17 @@ public class MainActivity extends AppCompatActivity {
         // TODO: Save State
         saveState(selected_Category);
         super.onStop();
+    }
+
+    public void setupFragments() {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction x = fragmentManager.beginTransaction();
+        RecipeListViewFragment list = new RecipeListViewFragment();
+
+        x.add(R.id.list_frame, list);
+        x.commit();
+
+
     }
 
     public void setupNav() {
@@ -133,17 +148,17 @@ public class MainActivity extends AppCompatActivity {
     protected void setupList (String type) {
         selected_Category = type;
         loadArray(type);
-
-        list= (ListView) findViewById(R.id.listview);
-        CustomListview customListview = new CustomListview(this, recipe_title, recipe_description, recipe_image_id);
-        list.setAdapter(customListview);
-
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                displayRecipeActivity(view, i);
-            }
-        });
+//
+//        list= (ListView) findViewById(R.id.listview);
+//        CustomListview customListview = new CustomListview(this, recipe_title, recipe_description, recipe_image_id);
+//        list.setAdapter(customListview);
+//
+//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                displayRecipeActivity(view, i);
+//            }
+//        });
     }
 
     protected void displayRecipeActivity(View view, int position) {
@@ -232,7 +247,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     protected void saveState (String recipeType) {
         System.out.println("Saving STATE : " + recipeType);
         sharedPreferences = getSharedPreferences("recipeType", Context.MODE_PRIVATE);
@@ -241,5 +255,6 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("recipeType", recipeType);
         editor.apply();
     }
+
 
 }
