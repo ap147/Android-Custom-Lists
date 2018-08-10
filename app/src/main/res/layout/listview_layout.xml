@@ -6,23 +6,24 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/imageView"
+            android:layout_width="135dp"
+            android:layout_height="130dp"
+            android:src="@drawable/water" />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="10dp">
-
-            <com.mikhaellopez.circularimageview.CircularImageView
-                android:id="@+id/imageView"
-                android:layout_width="150dp"
-                android:layout_height="130dp"
-                android:src="@drawable/water" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="8dp">
 
             <TextView
                 android:id="@+id/textTitle"
-                android:layout_width="206dp"
+                android:layout_width="215dp"
                 android:layout_height="wrap_content"
                 android:layout_alignStart="@+id/textDescription"
                 android:fontFamily="sans-serif"
@@ -33,13 +34,12 @@
 
             <TextView
                 android:id="@+id/textDescription"
-                android:layout_width="222dp"
+                android:layout_width="219dp"
                 android:layout_height="80dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="40dp"
                 android:text="TextView"
                 android:textColor="@color/colorDescription" />/>
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

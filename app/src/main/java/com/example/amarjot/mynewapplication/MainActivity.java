@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         setSharedPreferences();
         setupFragments();
 
-        // TODO: By default select Breakfast
+        // TODO: Figure out how to send parameters to Fragment
     }
 
     @Override
@@ -58,13 +58,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void setupFragments() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction x = fragmentManager.beginTransaction();
+        FragmentTransaction recipe_list = fragmentManager.beginTransaction();
         RecipeListViewFragment list = new RecipeListViewFragment();
 
-        x.add(R.id.list_frame, list);
-        x.commit();
-
-
+        recipe_list.add(R.id.list_frame, list);
+        recipe_list.commit();
     }
 
     public void setupNav() {
@@ -147,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void setupList (String type) {
         selected_Category = type;
-        loadArray(type);
+        //loadArray(type);
 //
 //        list= (ListView) findViewById(R.id.listview);
 //        CustomListview customListview = new CustomListview(this, recipe_title, recipe_description, recipe_image_id);
@@ -159,92 +157,6 @@ public class MainActivity extends AppCompatActivity {
 //                displayRecipeActivity(view, i);
 //            }
 //        });
-    }
-
-    protected void displayRecipeActivity(View view, int position) {
-        saveState(selected_Category);
-
-        Intent Recipe = new Intent(MainActivity.this, DisplayMessageActivity.class);
-        int message = position;
-        Recipe.putExtra(EXTRA_MESSAGE,message);
-        startActivity(Recipe);
-        overridePendingTransition( R.anim.slide_in_right, R.anim.slide_out_right);
-    }
-
-    protected void loadArray (String type) {
-
-        switch (type)
-        {
-            case "Breakfast" :
-                recipe_title = new String[] {
-                        getString(R.string.breakfast_title_1),
-                        getString(R.string.breakfast_title_2),
-                        getString(R.string.breakfast_title_3),
-                        getString(R.string.breakfast_title_4),
-                        getString(R.string.breakfast_title_5)};
-
-                recipe_description= new String[] {
-                        getString(R.string.breakfast_description_1),
-                        getString(R.string.breakfast_description_2),
-                        getString(R.string.breakfast_description_3),
-                        getString(R.string.breakfast_description_4),
-                        getString(R.string.breakfast_description_5)};
-
-                recipe_image_id= new Integer[] {
-                        R.drawable.oats,
-                        R.drawable.weetbix,
-                        R.drawable.pancakes,
-                        R.drawable.water,
-                        R.drawable.blueberry_smoothie};
-                        break;
-
-            case "Lunch" :
-                recipe_title = new String[] {
-                        getString(R.string.lunch_title_1),
-                        getString(R.string.lunch_title_2),
-                        getString(R.string.lunch_title_3),
-                        getString(R.string.lunch_title_4),
-                        getString(R.string.lunch_title_5)};
-
-                recipe_description= new String[] {
-                        getString(R.string.lunch_description_1),
-                        getString(R.string.lunch_description_2),
-                        getString(R.string.lunch_description_3),
-                        getString(R.string.lunch_description_4),
-                        getString(R.string.lunch_description_5)};
-
-                recipe_image_id= new Integer[] {
-                        R.drawable.date_scones,
-                        R.drawable.avocado_toast,
-                        R.drawable.guacamole,
-                        R.drawable.hummus_crackers,
-                        R.drawable.mini_pizzas};
-                        break;
-
-            case "Dinner" :
-                recipe_title = new String[] {
-                        getString(R.string.dinner_title_1),
-                        getString(R.string.dinner_title_2),
-                        getString(R.string.dinner_title_3),
-                        getString(R.string.dinner_title_4),
-                        getString(R.string.dinner_title_5)};
-
-                recipe_description= new String[] {
-                        getString(R.string.dinner_description_1),
-                        getString(R.string.dinner_description_2),
-                        getString(R.string.dinner_description_3),
-                        getString(R.string.dinner_description_4),
-                        getString(R.string.dinner_description_5)};
-
-                recipe_image_id= new Integer[] {
-                        R.drawable.thai_pumpkin_soup,
-                        R.drawable.canaloni,
-                        R.drawable.lasanga_vege,
-                        R.drawable.wraps,
-                        R.drawable.nachos};
-                        break;
-        }
-
     }
 
     protected void saveState (String recipeType) {
