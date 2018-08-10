@@ -23,11 +23,6 @@ public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
 
-    ListView list;
-
-    String [] recipe_title, recipe_description;
-    Integer [] recipe_image_id;
-
     String selected_Category;
 
     private DrawerLayout mDrawerLayout;
@@ -44,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
 
         setupNav();
         setSharedPreferences();
-        setupFragments();
+        setupFragment("Dinner");
 
         // TODO: Figure out how to send parameters to Fragment
     }
@@ -56,12 +51,17 @@ public class MainActivity extends AppCompatActivity {
         super.onStop();
     }
 
-    public void setupFragments() {
+    public void setupFragment(String type) {
+        Bundle bundle = new Bundle();
+        bundle.putString("selected_Category", type);
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction recipe_list = fragmentManager.beginTransaction();
-        RecipeListViewFragment list = new RecipeListViewFragment();
+        Fragment list = new RecipeListViewFragment();
 
-        recipe_list.add(R.id.list_frame, list);
+        list.setArguments(bundle);
+        recipe_list.replace(R.id.list_frame, list);
+        recipe_list.addToBackStack(null);
         recipe_list.commit();
     }
 
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                         // For example, swap UI fragments here
                         selected_Category = menuItem.getTitle().toString();
 
-                        setupList(selected_Category);
+                        setupFragment(selected_Category);
                         saveState(selected_Category);
                         return true;
                     }

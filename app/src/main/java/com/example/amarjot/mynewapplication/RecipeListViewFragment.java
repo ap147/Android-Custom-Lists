@@ -14,19 +14,17 @@ public class RecipeListViewFragment extends Fragment{
 
     SharedPreferences sharedPreferences;
 
-    String selected_Category = "Breakfast";
+    String selected_Category;
 
     ListView list;
-
     String [] recipe_title, recipe_description;
     Integer [] recipe_image_id;
-
-    public static final String EXTRA_MESSAGE = "com.example.amarjot.mynewapplication.MESSAGE";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        selected_Category = getArguments().getString("selected_Category");
         return inflater.inflate(R.layout.recipe_listview, container, false);
     }
 
@@ -36,7 +34,7 @@ public class RecipeListViewFragment extends Fragment{
     public void onViewCreated(View view, Bundle savedInstanceState) {
         // Setup any handles to view objects here
         // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
-        setupList("Lunch");
+        setupList(selected_Category);
     }
 
     protected void setupList (String type) {
