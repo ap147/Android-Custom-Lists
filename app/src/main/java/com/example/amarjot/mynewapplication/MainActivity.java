@@ -1,7 +1,6 @@
 package com.example.amarjot.mynewapplication;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.design.widget.NavigationView;
@@ -16,18 +15,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
-
     String selected_Category;
-
     private DrawerLayout mDrawerLayout;
-
-    public static final String EXTRA_MESSAGE = "com.example.amarjot.mynewapplication.MESSAGE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

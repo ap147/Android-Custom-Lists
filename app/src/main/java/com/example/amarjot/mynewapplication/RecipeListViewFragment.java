@@ -1,6 +1,7 @@
 package com.example.amarjot.mynewapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -56,11 +57,14 @@ public class RecipeListViewFragment extends Fragment{
     protected void displayRecipeActivity(View view, int position) {
 //        saveState(selected_Category);
 //
-//        Intent Recipe = new Intent(DisplayMessageActivity.class);
-//        int message = position;
-//        Recipe.putExtra(EXTRA_MESSAGE,message);
-//        startActivity(Recipe);
-//        getActivity().overridePendingTransition( R.anim.slide_in_right, R.anim.slide_out_right);
+        Intent intent = new Intent(getActivity(), DisplayMessageActivity.class);
+
+        Bundle recipe_details = new Bundle();
+        recipe_details.putString("recipe_title", recipe_title[position]);
+        recipe_details.putInt("recipe_image", recipe_image_id[position]);
+        intent.putExtras(recipe_details);
+        startActivity(intent);
+        getActivity().overridePendingTransition( R.anim.slide_in_right, R.anim.slide_out_right);
     }
 
     protected void saveState (String recipeType) {
