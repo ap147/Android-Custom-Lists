@@ -6,12 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class RecipeDetailsFragment extends Fragment{
-
-    protected String recipe_title;
-    protected int recipe_image;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -22,16 +20,15 @@ public class RecipeDetailsFragment extends Fragment{
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        // Setup any handles to view objects here
-        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
+        // This may not be good practice, https://stackoverflow.com/questions/11387740/where-how-to-getintent-getextras-in-an-android-fragment
+        int recipe_image = getActivity().getIntent().getExtras().getInt("recipe_image");
+        ImageView img = getView().findViewById(R.id.imageView);
+        img.setImageResource(recipe_image);
 
         setRecipeDetails();
     }
 
     private void setRecipeDetails() {
-
-//        ImageView img = getView().findViewById(R.id.imageView);
-//        img.setImageResource(recipe_image);
 
         TextView ingredient_1 = getView().findViewById(R.id.TextView_Recipe_Ingredient1);
         TextView ingredient_2 = getView().findViewById(R.id.TextView_Recipe_Ingredient2);

@@ -15,9 +15,6 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 public class DisplayMessageActivity extends AppCompatActivity {
 
-    protected String recipe_title;
-    protected int recipe_image;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -42,7 +39,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
     private void setupActionbar() {
 
         Bundle bundle = getIntent().getExtras();
-        recipe_title = bundle.getString("recipe_title");
+        String recipe_title = bundle.getString("recipe_title");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
