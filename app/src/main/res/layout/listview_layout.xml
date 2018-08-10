@@ -34,12 +34,13 @@
 
             <TextView
                 android:id="@+id/textDescription"
-                android:layout_width="219dp"
+                android:layout_width="wrap_content"
                 android:layout_height="80dp"
+                android:paddingRight="25dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
                 android:text="TextView"
-                android:textColor="@color/colorDescription" />/>
+                android:textColor="@color/colorDescription" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
