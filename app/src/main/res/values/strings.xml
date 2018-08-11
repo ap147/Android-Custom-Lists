@@ -68,14 +68,44 @@
     <string name="dinner_title_5"> Nachos </string>
     <string name="dinner_description_5">
         Quick to make and packed with fiber, vitamin C, and antioxidants. </string>
+
+    <string name="ingredientsTitle"> Ingredients </string>
+    <string name="directionsTitle"> Directions  </string>
     
-    
-    <string name="x">
-        - Place avocado flesh in a medium bowl and mash with a fork until semi-smooth.\n \n
-        - Add all other ingredients (reserving a little of the green part of the spring onion / green onion, a little coriander / cilantro and a little of the chilli for garnish) and stir to combine.\n \n
-        - Adjust seasonings to taste.\n \n
-        - Transfer to a serving bowl and garnish with spring onion / green onion greens, chilli and coriander / cilantro. \n \n
-        - Serve with Fresh Flour Tortillas or tortilla chips, if desired. Use within 3-4 hours of making.
+    <string name="direction1">
+        Cook noodles according to package directions; drain. Meanwhile, in a Dutch oven,
+        cook sausage, beef and onion over medium heat 8-10 minutes or until meat is no longer pink,
+        breaking up meat into crumbles. Add garlic; cook 1 minute. Drain.
+    </string>
+    <string name="direction2">
+        Stir in tomatoes, tomato paste, water, sugar, 3 tablespoons parsley, basil, fennel,
+        1/2 teaspoon salt and pepper; bring to a boil. Reduce heat; simmer, uncovered, 30 minutes, stirring occasionally.
+    </string>
+    <string name="direction3">
+        In a small bowl, mix egg, ricotta cheese, and remaining parsley and salt.
+    </string>
+    <string name="direction4">
+        Preheat oven to 375°. Spread 2 cups meat sauce into an ungreased 13x9-in. baking dish. Layer with three noodles and a third of the ricotta mixture.
+        Sprinkle with 1 cup mozzarella cheese and 2 tablespoons Parmesan cheese. Repeat layers twice. Top with remaining meat sauce and cheeses (dish will be full).
+    </string>
+    <string name="direction5">
+        Bake, covered, 25 minutes. Bake, uncovered, 25 minutes longer or until bubbly. Let stand 15 minutes before serving.
+    </string>
+
+    <string name="ingredient1">
+        • 1 medium onion, diced
+    </string>
+    <string name="ingredient2">
+        • 2 tablespoons sugar
+    </string>
+    <string name="ingredient3">
+        • 4 cups cheese
+    </string>
+    <string name="ingredient4">
+        • 300g red chili powder
+    </string>
+    <string name="ingredient5">
+        • 2 basil leafs
     </string>
 
 </resources>

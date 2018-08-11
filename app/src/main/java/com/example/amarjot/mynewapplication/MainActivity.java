@@ -31,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setupNav();
-        setSharedPreferences();
-        setupFragment("Dinner");
+        getState();
+        if (selected_Category != null)
+        {
+            setupFragment(selected_Category);
+        }
 
-        // TODO: Figure out how to send parameters to Fragment
     }
 
     @Override
@@ -124,32 +126,15 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void setSharedPreferences () {
+    protected void getState () {
 
         sharedPreferences = getSharedPreferences("recipeType", Context.MODE_PRIVATE);
 
         if (sharedPreferences.contains("recipeType"))
         {
-            String recipe_type = sharedPreferences.getString("recipeType", "");
-            setupList(recipe_type);
-            System.out.println(recipe_type);
+            selected_Category = sharedPreferences.getString("recipeType", "");
+            System.out.println(selected_Category);
         }
-    }
-
-    protected void setupList (String type) {
-        selected_Category = type;
-        //loadArray(type);
-//
-//        list= (ListView) findViewById(R.id.listview);
-//        CustomListview customListview = new CustomListview(this, recipe_title, recipe_description, recipe_image_id);
-//        list.setAdapter(customListview);
-//
-//        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                displayRecipeActivity(view, i);
-//            }
-//        });
     }
 
     protected void saveState (String recipeType) {
@@ -160,6 +145,5 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("recipeType", recipeType);
         editor.apply();
     }
-
 
 }
