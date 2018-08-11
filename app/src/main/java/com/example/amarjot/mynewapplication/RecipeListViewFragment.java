@@ -13,8 +13,6 @@ import android.widget.ListView;
 
 public class RecipeListViewFragment extends Fragment{
 
-    SharedPreferences sharedPreferences;
-
     String selected_Category;
 
     ListView list;
@@ -33,8 +31,7 @@ public class RecipeListViewFragment extends Fragment{
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        // Setup any handles to view objects here
-        // EditText etFoo = (EditText) view.findViewById(R.id.etFoo);
+
         setupList(selected_Category);
     }
 
@@ -55,25 +52,14 @@ public class RecipeListViewFragment extends Fragment{
         });
     }
     protected void displayRecipeActivity(View view, int position) {
-//        saveState(selected_Category);
-//
         Intent intent = new Intent(getActivity(), DisplayMessageActivity.class);
 
         Bundle recipe_details = new Bundle();
-        recipe_details.putString("recipe_title", recipe_title[position]);
-        recipe_details.putInt("recipe_image", recipe_image_id[position]);
+        recipe_details.putString(getString(R.string.pass_recipe_title), recipe_title[position]);
+        recipe_details.putInt(getString(R.string.pass_recipe_image), recipe_image_id[position]);
         intent.putExtras(recipe_details);
         startActivity(intent);
         getActivity().overridePendingTransition( R.anim.slide_in_right, R.anim.slide_out_right);
-    }
-
-    protected void saveState (String recipeType) {
-        System.out.println("Saving STATE : " + recipeType);
-        sharedPreferences = getActivity().getSharedPreferences("recipeType", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString("recipeType", recipeType);
-        editor.apply();
     }
 
     protected void loadArray (String type) {
@@ -106,10 +92,10 @@ public class RecipeListViewFragment extends Fragment{
             case "Lunch" :
                 recipe_title = new String[] {
                         getString(R.string.lunch_title_1),
-                        getString(R.string.lunch_title_2),
                         getString(R.string.lunch_title_3),
                         getString(R.string.lunch_title_4),
-                        getString(R.string.lunch_title_5)};
+                        getString(R.string.lunch_title_5),
+                        getString(R.string.lunch_title_2)};
 
                 recipe_description= new String[] {
                         getString(R.string.lunch_description_1),
@@ -120,10 +106,10 @@ public class RecipeListViewFragment extends Fragment{
 
                 recipe_image_id= new Integer[] {
                         R.drawable.date_scones,
-                        R.drawable.avocado_toast,
                         R.drawable.guacamole,
                         R.drawable.hummus_crackers,
-                        R.drawable.mini_pizzas};
+                        R.drawable.mini_pizzas,
+                        R.drawable.avocado_toast};
                 break;
 
             case "Dinner" :

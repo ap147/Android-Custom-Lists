@@ -18,8 +18,6 @@ import com.mikhaellopez.circularimageview.CircularImageView;
 
 public class DisplayMessageActivity extends AppCompatActivity {
 
-    private DrawerLayout mDrawerLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -44,7 +42,7 @@ public class DisplayMessageActivity extends AppCompatActivity {
     private void setupActionbar() {
 
         Bundle bundle = getIntent().getExtras();
-        String recipe_title = bundle.getString("recipe_title");
+        String recipe_title = bundle.getString(getString(R.string.pass_recipe_title));
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
