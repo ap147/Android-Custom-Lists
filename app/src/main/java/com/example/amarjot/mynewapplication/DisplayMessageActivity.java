@@ -35,7 +35,6 @@ public class DisplayMessageActivity extends AppCompatActivity {
         Fragment details = new RecipeDetailsFragment();
 
         recipe_details.replace(R.id.fragmentRecipeDetails, details);
-        recipe_details.addToBackStack(null);
         recipe_details.commit();
     }
 

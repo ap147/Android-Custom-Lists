@@ -54,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         list.setArguments(bundle);
         recipe_list.replace(R.id.list_frame, list);
-        recipe_list.addToBackStack(null);
         recipe_list.commit();
     }
 
