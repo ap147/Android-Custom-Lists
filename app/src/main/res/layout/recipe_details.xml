@@ -25,15 +25,17 @@
                 android:layout_marginRight="4dp"
                 android:orientation="vertical">
 
-                <ImageView
+                <com.mikhaellopez.circularimageview.CircularImageView
                     android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="215dp"
-                    android:paddingTop="10dp"
-                    android:layout_marginBottom="15dp"
-                    app:srcCompat="@drawable/oats"
-                    tools:layout_editor_absoluteX="295dp"
-                    tools:layout_editor_absoluteY="223dp" />
+                    android:layout_width="235dp"
+                    android:layout_height="230dp"
+                    android:src="@drawable/water"
+                    android:layout_gravity="center"
+                    app:civ_border_color="@color/colorBase"
+                    app:civ_border_width="4dp"
+                    app:civ_shadow="true"
+                    app:civ_shadow_radius="10"
+                    app:civ_shadow_color="@color/colorPrimary"/>
 
                 <TextView
                     android:layout_width="match_parent"

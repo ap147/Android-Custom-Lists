@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorBase">
 
     <LinearLayout
@@ -13,7 +14,12 @@
             android:id="@+id/imageView"
             android:layout_width="135dp"
             android:layout_height="130dp"
-            android:src="@drawable/water" />
+            android:src="@drawable/water"
+            app:civ_border_color="@color/colorBase"
+            app:civ_border_width="2dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="5"
+            app:civ_shadow_color="@color/colorPrimary"/>
 
         <LinearLayout
             android:layout_width="match_parent"
