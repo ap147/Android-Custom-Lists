@@ -59,6 +59,8 @@ public class CustomListview extends ArrayAdapter <String>{
             textViewName = v.findViewById(R.id.textTitle);
             textViewDescription = v.findViewById(R.id.textDescription);
             imageView = v.findViewById(R.id.imageView);
+            textViewName.setTextSize(20);
+            textViewDescription.setTextSize(16);
         }
     }
 }

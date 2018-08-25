@@ -43,7 +43,7 @@
                     android:layout_marginBottom="10dp"
                     android:text="@string/ingredientsTitle"
                     android:textColor="@color/colorSecondary"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -60,28 +60,33 @@
 
                         <TextView
                             android:id="@+id/TextView_Recipe_Ingredient1"
-                            android:layout_width="153dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:textColor="@color/colorPrimary"/>
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/TextView_Recipe_Ingredient2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:textColor="@color/colorPrimary" />
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
+
                         <TextView
                             android:id="@+id/TextView_Recipe_Ingredient3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:textColor="@color/colorPrimary" />
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="160dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="4dp"
+                        android:layout_marginLeft="12dp"
                         android:layout_marginRight="4dp"
                         android:orientation="vertical">
 
@@ -90,7 +95,8 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
-                            android:textColor="@color/colorPrimary" />
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/TextView_Recipe_Ingredients5"
@@ -98,7 +104,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
                             android:text="TextView"
-                            android:textColor="@color/colorPrimary" />
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="16sp" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -108,7 +115,7 @@
                     android:layout_marginBottom="10dp"
                     android:text="@string/directionsTitle"
                     android:textColor="@color/colorSecondary"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -122,28 +129,35 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="TextView"
-                        android:textColor="@color/colorPrimary" />
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/TextView_Recipe_Directions2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
                         android:layout_marginBottom="8dp"
-                        android:textColor="@color/colorPrimary" />
+                        android:text="TextView"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/TextView_Recipe_Directions3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="TextView"
                         android:layout_marginBottom="8dp"
-                        android:textColor="@color/colorPrimary" />
+                        android:text="TextView"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
                     <TextView
                         android:id="@+id/TextView_Recipe_Directions4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="TextView"
-                        android:textColor="@color/colorPrimary" />
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/TextView_Recipe_Directions5"
@@ -151,7 +165,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
                         android:text="TextView"
-                        android:textColor="@color/colorPrimary" />
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
 
                 </LinearLayout>
             </LinearLayout>
