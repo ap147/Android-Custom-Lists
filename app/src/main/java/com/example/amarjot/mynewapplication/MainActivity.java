@@ -1,6 +1,7 @@
 package com.example.amarjot.mynewapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.design.widget.NavigationView;
@@ -18,7 +19,6 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences sharedPreferences;
     String selected_Category;
     private DrawerLayout mDrawerLayout;
 
@@ -29,20 +29,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         setupNav();
-        getState();
-        if (selected_Category != null)
-        {
-            setupFragment(selected_Category);
+
+        if (savedInstanceState == null) {
+            selected_Category = "Breakfast";
+
+        }
+        else { // savedInstanceState has saved values
+            selected_Category = savedInstanceState.getString("selected_Category");
         }
 
+        setupFragment(selected_Category);
     }
 
     @Override
     protected void onStop() {
-        // TODO: Save State
-        saveState(selected_Category);
         super.onStop();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+
+        savedInstanceState.putString("selected_Category", selected_Category);
+
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
 
     public void setupFragment(String type) {
         Bundle bundle = new Bundle();
@@ -67,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         actionbar.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24px);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
-
         mDrawerLayout.addDrawerListener(
                 new DrawerLayout.DrawerListener() {
                     @Override
@@ -107,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
                         selected_Category = menuItem.getTitle().toString();
 
                         setupFragment(selected_Category);
-                        saveState(selected_Category);
                         return true;
                     }
                 });
@@ -122,25 +136,4 @@ public class MainActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    protected void getState () {
-
-        sharedPreferences = getSharedPreferences("recipeType", Context.MODE_PRIVATE);
-
-        if (sharedPreferences.contains("recipeType"))
-        {
-            selected_Category = sharedPreferences.getString("recipeType", "");
-            System.out.println(selected_Category);
-        }
-    }
-
-    protected void saveState (String recipeType) {
-        System.out.println("Saving STATE : " + recipeType);
-        sharedPreferences = getSharedPreferences("recipeType", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        editor.putString("recipeType", recipeType);
-        editor.apply();
-    }
-
 }
