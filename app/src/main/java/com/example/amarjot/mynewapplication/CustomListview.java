@@ -9,12 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import com.mikhaellopez.circularimageview.CircularImageView;
-
-import java.util.Objects;
-
-import static java.util.Objects.*;
 
 public class CustomListview extends ArrayAdapter <String>{
 
@@ -38,16 +33,14 @@ public class CustomListview extends ArrayAdapter <String>{
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         View r = convertView;
-        ViewHolder viewHolder = null;
-        if (r == null)
-        {
+        ViewHolder viewHolder;
+        if (r == null) {
             LayoutInflater layoutInflater = context.getLayoutInflater();
             r = layoutInflater.inflate(R.layout.listview_layout, null, true);
             viewHolder = new ViewHolder(r);
             r.setTag(viewHolder);
         }
-        else
-        {
+        else {
             viewHolder = (ViewHolder) r.getTag();
         }
 
@@ -58,16 +51,14 @@ public class CustomListview extends ArrayAdapter <String>{
         return r;
     }
 
-    class ViewHolder
-    {
+    class ViewHolder {
         TextView textViewName;
         TextView textViewDescription;
         CircularImageView imageView;
-        ViewHolder (View v)
-        {
-            textViewName = (TextView) v.findViewById(R.id.textTitle);
-            textViewDescription = (TextView) v.findViewById(R.id.textDescription);
-            imageView = (CircularImageView) v.findViewById(R.id.imageView);
+        ViewHolder (View v) {
+            textViewName = v.findViewById(R.id.textTitle);
+            textViewDescription = v.findViewById(R.id.textDescription);
+            imageView = v.findViewById(R.id.imageView);
         }
     }
 }

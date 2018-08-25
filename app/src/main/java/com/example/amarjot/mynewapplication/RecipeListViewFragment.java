@@ -37,7 +37,7 @@ public class RecipeListViewFragment extends Fragment{
         selected_Category = type;
         loadArray(type);
 
-        list= (ListView) getView().findViewById(R.id.listView);
+        list= getView().findViewById(R.id.listView);
         CustomListview customListview = new CustomListview(getContext(), recipe_title, recipe_description, recipe_image_id);
 
         list.setAdapter(customListview);
@@ -135,5 +135,4 @@ public class RecipeListViewFragment extends Fragment{
         }
 
     }
-
 }

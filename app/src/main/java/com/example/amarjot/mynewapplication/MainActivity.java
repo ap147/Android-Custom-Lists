@@ -1,8 +1,5 @@
 package com.example.amarjot.mynewapplication;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -39,16 +36,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         setupFragment(selected_Category);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
     }
 
     @Override
