@@ -52,7 +52,7 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:menu="@menu/drawer_view"
-        app:itemBackground="@drawable/drawer_selected_item"
+        app:itemTextColor="@color/colorDescription"
         app:headerLayout="@layout/nav_header"
         android:padding="0dp"/>
 
