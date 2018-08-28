@@ -1,5 +1,6 @@
 package com.example.amarjot.mynewapplication;
 
+import android.content.ClipData;
 import android.graphics.Color;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -21,17 +22,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         setupNav();
 
+        // savedInstanceState has saved values
         if (savedInstanceState == null) {
             selected_Category = "Breakfast";
-
+            // TODO: Open Nav Slide
         }
-        else { // savedInstanceState has saved values
+        else {
             selected_Category = savedInstanceState.getString("selected_Category");
         }
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onSaveInstanceState(savedInstanceState);
     }
 
-
+    // Add a list of recipes main activity.
     public void setupFragment(String type) {
         Bundle bundle = new Bundle();
         bundle.putString("selected_Category", type);
@@ -60,11 +61,12 @@ public class MainActivity extends AppCompatActivity {
         recipe_list.commit();
     }
 
+
     public void setupNav() {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitleTextColor(Color.WHITE);
-
+        // User can click this to see options (Breakfast, Lunch, Dinner)
         ActionBar actionbar = getSupportActionBar();
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_baseline_menu_24px);
@@ -103,10 +105,12 @@ public class MainActivity extends AppCompatActivity {
                         menuItem.setChecked(true);
                         // close drawer when item is tapped
                         mDrawerLayout.closeDrawers();
-
-                        // TODO: Add code here to update the UI based on the item selected
-                        // For example, swap UI fragments here
                         selected_Category = menuItem.getTitle().toString();
+                        FragmentManager fragmentManager = getSupportFragmentManager();
+                        FragmentTransaction recipe_list = fragmentManager.beginTransaction();
+                        Fragment list = new Fragment();
+                        recipe_list.replace(R.id.list_frame, list);
+                        recipe_list.commit();
 
                         setupFragment(selected_Category);
                         return true;
