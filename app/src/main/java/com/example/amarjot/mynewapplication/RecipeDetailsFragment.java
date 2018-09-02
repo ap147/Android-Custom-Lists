@@ -27,6 +27,7 @@ public class RecipeDetailsFragment extends Fragment{
         setRecipeDetails();
     }
 
+    // Loads recipe details (ingredients, directions)
     private void setRecipeDetails() {
 
         TextView ingredient_1 = getView().findViewById(R.id.TextView_Recipe_Ingredient1);

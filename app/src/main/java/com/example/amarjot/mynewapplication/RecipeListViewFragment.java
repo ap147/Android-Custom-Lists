@@ -39,19 +39,16 @@ public class RecipeListViewFragment extends Fragment{
 
         list= getView().findViewById(R.id.listView);
         CustomListview customListview = new CustomListview(getContext(), recipe_title, recipe_description, recipe_image_id);
-
         list.setAdapter(customListview);
-
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                displayRecipeActivity(view, i);
+                displayRecipeDetails(i);
             }
         });
     }
-    protected void displayRecipeActivity(View view, int position) {
+    protected void displayRecipeDetails(int position) {
         Intent intent = new Intent(getActivity(), DisplayMessageActivity.class);
-
         Bundle recipe_details = new Bundle();
         recipe_details.putString(getString(R.string.pass_recipe_title), recipe_title[position]);
         recipe_details.putInt(getString(R.string.pass_recipe_image), recipe_image_id[position]);
@@ -61,7 +58,6 @@ public class RecipeListViewFragment extends Fragment{
     }
 
     protected void loadArray (String type) {
-
         switch (type)
         {
             case "Breakfast" :
@@ -133,6 +129,5 @@ public class RecipeListViewFragment extends Fragment{
                         R.drawable.nachos};
                 break;
         }
-
     }
 }
