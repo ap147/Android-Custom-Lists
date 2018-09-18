@@ -7,8 +7,7 @@
 
     <string name="category_title_breakfast">Breakfast</string>
     <string name="category_title_lunch">Lunch</string>
-    <string name="category_title_dinner_">Dinner</string>
-
+    <string name="category_title_dinner">Dinner</string>
     <string name="breakfast_title_1"> Oats </string>
     <string name="breakfast_description_1">
         An easy, balanced breakfast.</string>
