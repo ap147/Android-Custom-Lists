@@ -2,6 +2,7 @@ package com.example.amarjot.mynewapplication;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +10,28 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import org.json.*;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class RecipeListViewFragment extends Fragment{
 
     String selected_Category;
 
     ListView list;
+
+    List recipes = new ArrayList();
+
     String [] recipe_title, recipe_description;
     Integer [] recipe_image_id;
+
+    private DatabaseReference mDatabase;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +74,41 @@ public class RecipeListViewFragment extends Fragment{
     }
 
     protected void loadArray (String type) {
+
+        // Get a reference to our posts
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref = database.getReference("recipes");
+        // Attach a listener to read the data at our posts reference
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot: dataSnapshot.getChildren())
+                {
+                    // How to parse JSON : //http://theoryapp.com/parse-json-in-java/
+                    JSONObject obj;
+                    try {
+                        obj = new JSONObject(singleSnapshot.getValue().toString());
+
+                        String recipeName = obj.getString("name");
+                        Recipe newRecipe = new Recipe(recipeName);
+
+                        recipes.add(newRecipe);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Recipe x = (Recipe) recipes.get(0);
+                    System.out.println("Recipe Name : " + x.getName());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
+
+
         switch (type)
         {
             case "Breakfast" :
